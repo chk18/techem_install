@@ -1,0 +1,56 @@
+#!/bin/bash
+# 
+# TECH EM STUDIOS INSTALL SCRIPT V.00001
+#
+
+clear		# CLEARS TERMINAL
+
+
+
+# ADD TWO FINGER TAP RIGHT CLICK
+echo "And the neckbeard said 'LET THERE BE RIGHT CLICK'" 
+sed -i "$a synclient tapbutton2=3" /etc/xdg/xfce4/xinitrc
+
+# CHANGE BACKGROUND
+echo "Changing desktop background"
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ~/Pictures/wallpaper.jpg
+
+# DISABLE DESKTOP ICONS
+echo "Disabling desktop icon..."
+xfconf-query -c xfce4-desktop -np '/desktop-icons/style' -t 'int' -s '0';
+
+# RE-ENABLE DESKTOP ICONS (Just in case)
+# xfconf-query -c xfce4-desktop -np '/desktop-icons/style' -t 'int' -s '2';
+
+# PANEL F*CKERY (Massive Headaches Ahead)
+echo "Here goes nothing!" 
+echo "Pssst, cross your fingers will you!"
+
+
+
+# EVERYTHING PYTHON
+echo "Installing everything Python!"
+sudo apt-get --assume-yes install matplotlib
+apt-get --assume-yes install idle
+apt-get --assume-yes install git
+apt-get --assume-yes install python-setuptools
+apt-get --assume-yes install python-dev
+apt-get --assume-yes install build-essential
+easy_install pip
+apt-get --assume-yes install git-cola
+apt-get --assume-yes install python-numpy
+apt-get --assume-yes install python-scipy
+apt-get --assume-yes install python-pygame
+
+# INSTALL FIREFOX
+echo "Installing Firefox"
+apt-get --assume-yes install firefox
+
+# REMOVE NETSURF
+echo "Remove Netsurf"
+apt-get --purge remove netsurf
+apt-get --purge autoremove 
+
+# INSTALL TEXT EDITOR GEANY
+echo "Installing Geany" 
+apt-get --assume-yes install geany
