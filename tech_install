@@ -7,6 +7,9 @@ clear		# CLEARS TERMINAL
 
 
 
+# PALM SENSE STUFF FOR SYNCLIENT
+synclient PalmDetect=1
+
 # ADD TWO FINGER TAP RIGHT CLICK
 echo "And the neckbeard said 'LET THERE BE RIGHT CLICK'" 
 sed -i "$a synclient tapbutton2=3" /etc/xdg/xfce4/xinitrc
@@ -22,9 +25,17 @@ xfconf-query -c xfce4-desktop -np '/desktop-icons/style' -t 'int' -s '0';
 # RE-ENABLE DESKTOP ICONS (Just in case)
 # xfconf-query -c xfce4-desktop -np '/desktop-icons/style' -t 'int' -s '2';
 
+
 # PANEL F*CKERY (Massive Headaches Ahead)
 echo "Here goes nothing!" 
 echo "Pssst, cross your fingers will you!"
+
+# REMOVE OLD PANELS
+xfconf-query --channel xfce4-panel --property /panels/panel-0 --reset --recursive
+xfconf-query --channel xfce4-panel --property /panels/panel-1 --reset --recursive
+
+
+
 
 
 
