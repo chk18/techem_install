@@ -22,23 +22,24 @@ sudo ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
 
 # Turn on PalmDetect 
 echo "Adding the PalmDetect technology to make you life not crappy and miserable"
-sudo synclient PalmDetect=1
+synclient PalmDetect=1
 sleep 5
 
 # Create local .xinitrc
-echo '#CUSTOM MAGIC' > .xinitrc
+echo '#CUSTOM MAGIC' > ~/.xinitrc
 sleep 2
 
 # Turn off touchpad while typing
 echo "Turning off the touchpad while you type"
-echo 'syndaemon -K -i 0.5 -R -d' >> ~/.xinitrc
+echo 'exec syndaemon -K -i 0.5 -R -d' >> ~/.xinitrc
 sleep 5
 
 # Add two finger right click
-echo "Enabling Two Finger Tap Right Click"
-sed -i "$a synclient tapbutton2=3" >> ~/.xinitrc
-sleep 5
+#echo "Enabling Two Finger Tap Right Click"
+#sed -i "$a synclient tapbutton2=3" >> ~/.xinitrc
+#sleep 5
 # Set custom background
+
 echo "Changing desktop background"
 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-0/workspace0/last-image --set /home/techemstudent/techem_install/bg.png
 
@@ -76,8 +77,9 @@ sudo apt-get --assume-yes install firefox
 
 # Remove Netsurf
 echo "Remove Netsurf"
-sudo apt-get --purge remove netsurf
-sudo apt-get --purge autoremove 
+sudo apt-get remove netsurf
+sudo apt-get remove --auto-remove netsurf
+sudo apt-get purge netsurf
 
 # Install Geany
 echo "Installing Geany" 
