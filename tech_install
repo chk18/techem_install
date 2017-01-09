@@ -55,7 +55,6 @@ xfconf-query -c xfce4-desktop -np '/desktop-icons/style' -t 'int' -s '0';
 echo "Remove Old Panels"
 #xfconf-query --channel xfce4-panel --property /panels/panel-0 --reset --recursive
 xfconf-query --channel xfce4-panel --property /panels/panel-2 --reset --recursive
-xfce4-panel -r &
 
 # Installing Python, and extras
 echo "Installing everything Python!"
