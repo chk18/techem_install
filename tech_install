@@ -81,6 +81,8 @@ sudo apt-get --purge autoremove
 # Install Geany
 echo "Installing Geany" 
 sudo apt-get --assume-yes install geany
+sudo apt-get --assume-yes install geany
+sudo apt-get --assume-yes install emacs
 
 # Install Arduino
 sudo apt-get --assume-yes install arduino arduino-core
