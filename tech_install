@@ -1,67 +1,88 @@
 #!/bin/bash
 # 
-# TECH EM STUDIOS INSTALL SCRIPT V.00001
+#	 Tech 'Em Studios 
+#	 Chrome Book Install Script
 #
 
-clear		# CLEARS TERMINAL
 
+echo "Clear screen" 
+clear
+sleep 2
 
+# Create Students directory
+echo "Creating ~/Students directory"
+mkdir ~/Students
+sleep 1
 
-# PALM SENSE STUFF FOR SYNCLIENT
-synclient PalmDetect=1
+# Set Time Zone
+echo "Setting up timezone"
+sleep 2
+sudo rm /etc/localtime
+sudo ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
 
-# ADD TWO FINGER TAP RIGHT CLICK
-echo "And the neckbeard said 'LET THERE BE RIGHT CLICK'" 
-sed -i "$a synclient tapbutton2=3" /etc/xdg/xfce4/xinitrc
+# Turn on PalmDetect 
+echo "Adding the PalmDetect technology to make you life not crappy and miserable"
+sudo synclient PalmDetect=1
+sleep 5
 
-# CHANGE BACKGROUND
+# Create local .xinitrc
+echo '#CUSTOM MAGIC' > .xinitrc
+sleep 2
+
+# Turn off touchpad while typing
+echo "Turning off the touchpad while you type"
+echo 'syndaemon -K -i 0.5 -R -d' >> ~/.xinitrc
+sleep 5
+
+# Add two finger right click
+echo "Enabling Two Finger Tap Right Click"
+sed -i "$a synclient tapbutton2=3" >> ~/.xinitrc
+sleep 5
+# Set custom background
 echo "Changing desktop background"
-xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ~/Pictures/wallpaper.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-0/workspace0/last-image --set ./bg.png
 
-# DISABLE DESKTOP ICONS
+# Disable desktop icons to remove clutter
+# Encourage students to create folders in ~/Students
 echo "Disabling desktop icon..."
 xfconf-query -c xfce4-desktop -np '/desktop-icons/style' -t 'int' -s '0';
 
-# RE-ENABLE DESKTOP ICONS (Just in case)
+# Re-enable desktop icons
 # xfconf-query -c xfce4-desktop -np '/desktop-icons/style' -t 'int' -s '2';
 
-
-# PANEL F*CKERY (Massive Headaches Ahead)
-echo "Here goes nothing!" 
-echo "Pssst, cross your fingers will you!"
-
-# REMOVE OLD PANELS
-xfconf-query --channel xfce4-panel --property /panels/panel-0 --reset --recursive
+# Remove bottom panel
+echo "Remove Old Panels"
+#xfconf-query --channel xfce4-panel --property /panels/panel-0 --reset --recursive
 xfconf-query --channel xfce4-panel --property /panels/panel-1 --reset --recursive
 
-
-
-
-
-
-# EVERYTHING PYTHON
+# Installing Python, and extras
 echo "Installing everything Python!"
-sudo apt-get --assume-yes install matplotlib
-apt-get --assume-yes install idle
-apt-get --assume-yes install git
-apt-get --assume-yes install python-setuptools
-apt-get --assume-yes install python-dev
-apt-get --assume-yes install build-essential
+sudo apt-get --assume-yes install python-matplotlib
+sudo apt-get --assume-yes install idle
+sudo apt-get --assume-yes install git
+sudo apt-get --assume-yes install python-setuptools
+sudo apt-get --assume-yes install python-dev
+sudo apt-get --assume-yes install build-essential
 easy_install pip
-apt-get --assume-yes install git-cola
-apt-get --assume-yes install python-numpy
-apt-get --assume-yes install python-scipy
-apt-get --assume-yes install python-pygame
+sudo apt-get --assume-yes install git-cola
+sudo apt-get --assume-yes install python-numpy
+sudo apt-get --assume-yes install python-scipy
+sudo apt-get --assume-yes install python-pygame
 
-# INSTALL FIREFOX
+# Install Firefox
 echo "Installing Firefox"
-apt-get --assume-yes install firefox
+sudo apt-get --assume-yes install firefox
 
-# REMOVE NETSURF
+# Remove Netsurf
 echo "Remove Netsurf"
-apt-get --purge remove netsurf
-apt-get --purge autoremove 
+sudo apt-get --purge remove netsurf
+sudo apt-get --purge autoremove 
 
-# INSTALL TEXT EDITOR GEANY
+# Install Geany
 echo "Installing Geany" 
-apt-get --assume-yes install geany
+sudo apt-get --assume-yes install geany
+
+# Install Arduino
+sudo apt-get --assume-yes install arduino arduino-core
+sudo usermod -a -G tty techemstudent
+sudo usermod -a -G dialout techemstudent  
