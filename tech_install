@@ -38,6 +38,8 @@ sleep 1
 mkdir ~/Students/Code_Em/Tuesday
 sleep 1
 mkdir ~/Students/Code_Em/Thursday
+sleep 1
+mkdir ~/Students/Camp_Em
 sleep 1 
 mkdir ~/Students/Camp_Em/Minecraft
 sleep 1
