@@ -45,7 +45,7 @@ mkdir ~/Students/Camp_Em/Minecraft
 sleep 1
 mkdir ~/Students/Camp_Em/Alexa
 sleep 1
-mkdir ~/Students/JJ_Henning
+mkdir ~/Students/JG_Henning
 sleep 1
 mkdir ~/Students/Alexa
 sleep 1
@@ -125,5 +125,5 @@ sudo apt-get --assume-yes install emacs
 
 # Install Arduino
 sudo apt-get --assume-yes install arduino arduino-core
-sudo usermod -a -G tty techemstudent
-sudo usermod -a -G dialout techemstudent  
+sudo usermod -a -G tty student
+sudo usermod -a -G dialout student 
